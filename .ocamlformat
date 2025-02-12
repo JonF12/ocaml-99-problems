@@ -7,5 +7,4 @@ space-around-lists = true
 space-around-records = true
 break-cases = all
 break-fun-decl = wrap
-break-fun-cases = all
 type-decl = sparse
