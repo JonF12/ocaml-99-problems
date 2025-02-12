@@ -30,9 +30,25 @@ let nth_of_list n lst =
   in
     nth_of_list_aux lst 0
 
+(* 4 *)
+let length_of_list lst =
+  let rec length_of_list_aux acc = function
+    | [] -> acc
+    | h :: t -> length_of_list_aux (acc + 1) t
+  in
+    length_of_list_aux 0 lst
+
+(* 5 *)
+let reverse_list lst =
+  let rec reverse_list_aux acc = function
+    | [] -> acc
+    | h :: t -> reverse_list_aux (h :: acc) t
+  in
+    reverse_list_aux [] lst
+
+(* 6 *)
+let is_palindrome lst = lst = reverse_list lst
+
 let () =
-  let result = last_two_of_list [ 3 ] in
-    match result with
-      | None -> Printf.printf "No value found\n"
-      | Some [ x; y ] -> Printf.printf "val: %d %d\n" x y
-      | Some _ -> Printf.printf "Unexpected length"
+  let result = is_palindrome [ 1; 1; 2; 1 ] in
+    Printf.printf "\n RESULT:%b\n\n" result
