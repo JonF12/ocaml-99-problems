@@ -1,5 +1,4 @@
 (executable
  (public_name hello)
  (name main)
- (flags (-w -32))
- (libraries hello ))
+ (flags (-w -32)))

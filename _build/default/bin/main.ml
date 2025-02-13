@@ -1,54 +1,18 @@
-(* 1 *)
-let tail_of_list lst =
-  let rec tail_of_list_aux = function
-    | [] -> None
-    | h :: [] -> Some h
-    | h :: t -> tail_of_list_aux t
+let to_digit n =
+  let rec to_digit_aux acc num =
+    match num with
+      | 0 when acc = [] -> [ "0" ]
+      | 0 -> acc
+      | n ->
+        let digit = string_of_int (n mod 10) in
+          to_digit_aux (digit :: acc) (n / 10)
   in
-    tail_of_list_aux lst
-
-(* 2 *)
-let last_two_of_list lst =
-  let rec last_two_of_list_aux = function
-    | [] -> None
-    | [ h1 ] -> None
-    | [ h1; h2 ] -> Some [ h1; h2 ]
-    | h :: t -> last_two_of_list_aux t
-  in
-    last_two_of_list_aux lst
-
-(* 3 *)
-let nth_of_list n lst =
-  let rec nth_of_list_aux lst count =
-    match lst with
-      | [] -> None
-      | h :: t ->
-        if count = n then
-          Some h
-        else
-          nth_of_list_aux t (count + 1)
-  in
-    nth_of_list_aux lst 0
-
-(* 4 *)
-let length_of_list lst =
-  let rec length_of_list_aux acc = function
-    | [] -> acc
-    | h :: t -> length_of_list_aux (acc + 1) t
-  in
-    length_of_list_aux 0 lst
-
-(* 5 *)
-let reverse_list lst =
-  let rec reverse_list_aux acc = function
-    | [] -> acc
-    | h :: t -> reverse_list_aux (h :: acc) t
-  in
-    reverse_list_aux [] lst
-
-(* 6 *)
-let is_palindrome lst = lst = reverse_list lst
+    String.concat "-" (to_digit_aux [] n)
 
 let () =
-  let result = is_palindrome [ 1; 1; 2; 1 ] in
-    Printf.printf "\n RESULT:%b\n\n" result
+  Printf.printf "Running: \n\n";
+  let result = to_digit 90994123909 in
+    Printf.printf "%s" result
+(*Printf.printf "\n";*)
+(*List.iter (fun x -> Printf.printf "%d" x) result;*)
+(*Printf.printf "\n"*)
