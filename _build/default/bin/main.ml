@@ -1,18 +1,54 @@
-let to_digit n =
-  let rec to_digit_aux acc num =
-    match num with
-      | 0 when acc = [] -> [ "0" ]
-      | 0 -> acc
-      | n ->
-        let digit = string_of_int (n mod 10) in
-          to_digit_aux (digit :: acc) (n / 10)
-  in
-    String.concat "-" (to_digit_aux [] n)
+let rec product = function (**)
+  | [] -> 1 
+  | h :: t -> h * product t
 
-let () =
-  Printf.printf "Running: \n\n";
-  let result = to_digit 90994123909 in
-    Printf.printf "%s" result
-(*Printf.printf "\n";*)
-(*List.iter (fun x -> Printf.printf "%d" x) result;*)
+
+let rec str_concat = function (**)
+  | [] -> ""
+  | h :: t -> h ^ str_concat t
+
+let has_bigred = function
+  | "bigred" :: t -> true
+  | _ -> false
+
+let two_or_four = function
+  | a :: b :: c :: d :: [] -> true
+  | a :: b :: [] -> true
+  | _ -> false
+  
+let first_two_equal = function
+  | x :: y :: t -> x = y
+  | _ -> false
+
+let rec sum_lines accum =
+  match int_of_string_opt (read_line()) with
+    | Some value -> sum_lines(value + accum)
+    | None -> accum
+
+
+let print_square =
+  let rec print_square_aux x y =
+    match (x, y) with
+    | (10,10) -> print_string "*\n";
+    | (10, y) -> print_string "*\n"; print_square_aux 1 (y+1)
+    | (x , 1) -> print_string "*"; print_square_aux (x+1) y
+    | (1 , y) -> print_string "*"; print_square_aux (x+1) y
+    | (x ,10) -> print_string "*"; print_square_aux (x+1) y
+    | _ -> print_string " "; print_square_aux (x+1) y
+  in
+  print_square_aux 1 1
+
+
+let () = 
+  print_square
+  (*Printf.printf "Running: \n\n";*)
+  (*let result = sum_lines 0 in*)
+  (*Printf.printf "%d" result;*)
+
+(*List.iter*)
+(*  (fun group ->*)
+(*    Printf.printf "[";*)
+(*    List.iter (fun x -> Printf.printf "%d," x) group;*)
+(*    Printf.printf "]")*)
+(*  result;*)
 (*Printf.printf "\n"*)

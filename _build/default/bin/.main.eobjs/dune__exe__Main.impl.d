@@ -1,1 +1,1 @@
-bin/main.ml: Printf String
+bin/main.ml:

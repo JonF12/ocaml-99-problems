@@ -4,7 +4,7 @@ let has_item lst n =
     | [] -> false
     | head :: rest -> head = n || has_item_aux n rest
   in
-    has_item_aux n lst
+  has_item_aux n lst
 
 let compress lst =
   let rec compress_aux new_lst = function
@@ -15,5 +15,25 @@ let compress lst =
       else
         head :: compress_aux (head :: new_lst) rest
   in
-    compress_aux [] lst
+  compress_aux [] lst
 (* 8 END *)
+
+(* 9*)
+let pack_duplicates lst =
+  let rec pack_duplicates_aux acc prev = function
+    | [] -> List.rev acc
+    | head :: rest ->
+      if prev = head then
+        match acc with
+          | current :: others ->
+            pack_duplicates_aux ((head :: current) :: others) head rest
+          | [] -> pack_duplicates_aux [ [ head ] ] head rest
+      else
+        pack_duplicates_aux ([ head ] :: acc) head rest
+  in
+  match lst with
+    | [] -> []
+    | head :: rest -> pack_duplicates_aux [ [ head ] ] head rest
+(*9 end*)
+
+(*10*)

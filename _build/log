@@ -13,4 +13,7 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /run/current-system/sw/bin/ocamlc.opt -config > /tmp/dune_05a5fc_output
+$ /run/current-system/sw/bin/ocamlc.opt -config > /tmp/dune_827dcc_output
+$ (cd _build/default && /run/current-system/sw/bin/ocamldep.opt -modules -impl bin/main.ml) > _build/default/bin/.main.eobjs/dune__exe__Main.impl.d
+$ (cd _build/default && /run/current-system/sw/bin/ocamlopt.opt -w -32 -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -open Dune__exe -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /run/current-system/sw/bin/ocamlopt.opt -w -32 -g -o bin/main.exe bin/.main.eobjs/native/dune__exe.cmx bin/.main.eobjs/native/dune__exe__Main.cmx)
