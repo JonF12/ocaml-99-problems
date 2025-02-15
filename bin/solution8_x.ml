@@ -37,3 +37,16 @@ let pack_duplicates lst =
 (*9 end*)
 
 (*10*)
+let encode lst =
+  let rec encode_aux acc prev = function
+    | [] -> List.rev acc
+    | head :: rest -> (
+      match acc with
+        | (count, value) :: others when value = head ->
+          encode_aux ((count + 1, value) :: others) head rest
+        | _ -> encode_aux ((1, head) :: acc) head rest)
+  in
+  match lst with
+    | [] -> []
+    | head :: rest -> encode_aux [ (1, head) ] head rest
+(*10 end*)

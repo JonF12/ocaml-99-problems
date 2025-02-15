@@ -1,7 +1,7 @@
 break-cases=toplevel
 sequence-style=terminator
 break-sequences=true
-break-cases=fit
+break-cases=all
 cases-matching-exp-indent=normal
 break-collection-expressions=wrap
 if-then-else=k-r
