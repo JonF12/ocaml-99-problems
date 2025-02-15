@@ -1,3 +1,4 @@
+(* @lexer ocamllex *)
 {
   open Token
 }
@@ -8,4 +9,5 @@ rule token = parse
   | [':'] { Colon }
   | [','] { Comma }
   | ['{'] { Comma }
+  | ['}'] { NodeEnd}
 
