@@ -1,15 +1,15 @@
 (lang dune 3.17)
 
 (name hello)
-
+(using menhir 2.0)  ; If you're using menhir for parsing
 (generate_opam_files true)
 
 (source
  (github username/reponame))
 
 (authors "Author Name <author@example.com>")
-
 (maintainers "Maintainer Name <maintainer@example.com>")
+
 
 (license LICENSE)
 

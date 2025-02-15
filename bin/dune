@@ -1,4 +1,9 @@
 (executable
- (public_name hello)
  (name main)
+ (public_name hello)
+ (preprocess
+  (pps ppx_deriving.show))
+ (libraries unix ppx_deriving)  ; Add ppx_deriving here
  (flags (-w -32)))
+
+(ocamllex lexer)
