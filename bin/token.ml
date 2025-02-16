@@ -7,6 +7,21 @@ type token =
   | CloseNode
   | Comma
   | Colon
-  | StringQuote of string_opt
-  | StringProperty of string
   | StringValue of string
+  | IntValue of int
+  | BoolValue of bool
+  | NullValue
+  | EOF
+
+let string_of_token = function
+  | OpenArray -> "OpenArray"
+  | CloseArray -> "CloseArray"
+  | OpenNode -> "OpenNode"
+  | CloseNode -> "CloseNode"
+  | Comma -> "Comma"
+  | Colon -> "Colon"
+  | StringValue str -> "StringValue(\"" ^ str ^ "\")"
+  | IntValue n -> "IntValue(" ^ string_of_int n ^ ")"
+  | BoolValue b -> "BoolValue(" ^ string_of_bool b ^ ")"
+  | NullValue -> "NullValue"
+  | EOF -> "EOF"
