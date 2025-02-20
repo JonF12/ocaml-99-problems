@@ -1,17 +1,20 @@
-open Token
+open Printf
 
-let get_token_list lexbuf =
-  let rec get_token_list_aux acc =
-    match Lexer.token lexbuf with
-      | EOF -> acc
-      | t -> get_token_list_aux (t :: acc)
-  in
-  List.rev (get_token_list_aux [])
+let lst_and_lib = List.for_all (fun x -> x)
+
+let rec create_list (i : int) (j : int) =
+  if i > j then
+    []
+  else
+    i :: create_list (i + 1) j
 
 let () =
-  let lexbuf =
-    Lexing.from_string
-      "{\"name\": \"John\", \"age\": 30, \"array\": [1, 2, null]}"
-  in
-  let token_list = get_token_list lexbuf in
-  List.map string_of_token token_list |> List.iter (Printf.printf "%s\n")
+  let result = create_list 0 10 |> List.map (fun x -> x * x) in
+  List.iter (fun x -> printf "%d," x) result
+
+(*let has_tc = has_trailing_comma token_list in*)
+(*List.iter*)
+(*  (fun (Some token, pos) ->*)
+(*    Printf.printf "Trailing comma found at %s: %s\n" (string_of_position pos)*)
+(*      (string_of_token token))*)
+(*  has_tc*)
