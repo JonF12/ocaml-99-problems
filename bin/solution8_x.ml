@@ -49,4 +49,57 @@ let encode lst =
   match lst with
     | [] -> []
     | head :: rest -> encode_aux [ (1, head) ] head rest
+
 (*10 end*)
+(*11 RUN LENGTH ENCODING (good version) *)
+type 'a rle = One of 'a | Many of int * 'a
+
+let to_rle group =
+  match Seq.uncons group with
+    | Some (first, _) ->
+      if Seq.length group > 1 then
+        Many (Seq.length group, first)
+      else
+        One first
+    | None -> failwith "Empty group encountered"
+
+let encode lst =
+  lst |> List.to_seq |> Seq.group ( = ) |> Seq.map to_rle |> List.of_seq
+(*11 end*)
+
+(*12 decode rle*)
+let from_rle = function
+  | Many (count, value) -> List.init count (fun _ -> value)
+  | One value -> [ value ]
+
+let decode lst = List.map from_rle lst |> List.concat
+let duplicate_11 lst = List.map (fun x -> [ x; x ]) lst |> List.concat
+
+let duplicate_12 lst ct =
+  List.map (fun x -> List.init ct (fun y -> x)) lst |> List.concat
+
+let drop_nth_13 lst n = List.filteri (fun x i -> i mod n <> 0) lst
+let split_length_14 lst n = (List.take n lst, List.drop n lst)
+
+let slice_15 lst i j =
+  if i > j then raise (Invalid_argument "invalid arg");
+  List.drop i lst |> List.take (j - i)
+
+let rotate_16 lst n =
+  if List.length lst = 0 || n = 0 then
+    lst
+  else
+    let rot = n mod (List.length lst - 1) in
+    if rot = 0 then
+      lst
+    else
+      List.drop rot lst @ List.take rot lst
+
+let remove_at_17 lst n = List.filteri (fun x i -> i - 1 <> n) lst
+
+let insert_at_18 item i lst =
+  if List.length lst - 1 < i || i < 0 then
+    raise (Invalid_argument "invalid arg");
+  List.take i lst @ [ item ] @ List.drop i lst
+
+(** bunch of solutions ez im not writing tail recursive for all of these LOL **)
