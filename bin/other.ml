@@ -1,6 +1,6 @@
 let rec product lst = List.fold_left ( * ) 1 lst
 
-let rec str_concat = function
+ let rec str_concat = function
   | [] -> ""
   | h :: t -> h ^ str_concat t
 

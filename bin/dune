@@ -1,7 +1,7 @@
 (executable
  (name main)
  (public_name hello)
- (libraries unix)
+ (libraries unix sedlex angstrom)
+ (preprocess (pps sedlex.ppx))
  (flags (-w -32)))
 
-(ocamllex lexer)

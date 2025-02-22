@@ -1,7 +1,6 @@
 (lang dune 3.17)
 
 (name hello)
-(using menhir 2.0)  ; If you're using menhir for parsing
 (generate_opam_files true)
 
 (source
