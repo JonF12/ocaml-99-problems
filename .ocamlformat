@@ -1,15 +1,6 @@
-break-cases=toplevel
-sequence-style=terminator
-break-sequences=true
-break-cases=all
-cases-matching-exp-indent=normal
-break-collection-expressions=wrap
-if-then-else=k-r
-function-indent=2
-extension-indent=2
-indent-after-in=0
-let-binding-indent=2
-match-indent=2
-match-indent-nested=always
-cases-exp-indent=2
-margin=80
+version = 0.27.0
+profile = janestreet
+
+margin = 70
+doc-comments-padding = 100
+exp-grouping = preserve

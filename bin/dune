@@ -2,6 +2,6 @@
  (name main)
  (public_name hello)
  (libraries unix sedlex angstrom)
- (preprocess (pps sedlex.ppx))
+ (preprocess (pps ppx_deriving.show sedlex.ppx))
  (flags (-w -32)))
 

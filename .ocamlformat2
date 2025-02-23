@@ -1,0 +1,15 @@
+break-cases=toplevel
+sequence-style=terminator
+break-sequences=true
+break-cases=all
+cases-matching-exp-indent=normal
+break-collection-expressions=wrap
+if-then-else=fit-or-vertical
+function-indent=2
+extension-indent=2
+indent-after-in=0
+let-binding-indent=2
+match-indent=2
+match-indent-nested=always
+cases-exp-indent=2
+margin=70
